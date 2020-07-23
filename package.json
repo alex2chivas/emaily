@@ -8,7 +8,7 @@
 		"npm": "6.14.5"
 	},
 	"scripts": {
-		"start": "node npm start",
+		"start": "node index.js",
 		"default": "git add . && git commit -m 'pushed code' && git push"
 	},
 	"repository": {
