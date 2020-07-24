@@ -10,9 +10,10 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+	console.log(id);
 	User.findById(id)
 		.then(user => {
-			done(null, id);
+			done(null, user);
 		})
 		.catch(err => {
 			console.log('error in serial');
