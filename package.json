@@ -9,13 +9,7 @@
 	},
 	"scripts": {
 		"start": "node index.js",
-		"dev": "nodemon index.js",
-		"default": "git add . && git commit -m 'pushed index, gitignore, readme and package files' && git push",
-		"services": "git add services && git commit -m 'finished pushing code from services folder' && git push",
-		"config": "git add config && git commit -m 'finished pushing code from config folder' && git push",
-		"models": "git add models && git commit -m 'finished pushing code from models folder' && git push",
-		"routes": "git add routes && git commit -m 'finished pushing code from routes folder' && git push",
-		"h": "git push heroku master"
+		"dev": "nodemon index.js"
 	},
 	"repository": {
 		"type": "git",
