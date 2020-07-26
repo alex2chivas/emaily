@@ -7,12 +7,14 @@ const Home = () => <h2>Hello from home</h2>;
 
 const App = () => {
 	return (
-		<BrowserRouter>
-			<Header />
-			<Switch>
-				<Route path='/' exact component={Home} />
-			</Switch>
-		</BrowserRouter>
+		<div className='container'>
+			<BrowserRouter>
+				<Header />
+				<Switch>
+					<Route path='/' exact component={Home} />
+				</Switch>
+			</BrowserRouter>
+		</div>
 	);
 };
 
