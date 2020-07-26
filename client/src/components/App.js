@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-const Header = () => <h2>Hello from header</h2>;
-const HeaderDash = () => <h2>Hello from Dash</h2>;
+import Header from './Header';
+
+const Home = () => <h2>Hello from home</h2>;
 
 const App = () => {
 	return (
 		<BrowserRouter>
+			<Header />
 			<Switch>
-				<Route path='/' exact component={Header} />
-				<Route path='/headerdash' exact component={HeaderDash} />
+				<Route path='/' exact component={Home} />
 			</Switch>
 		</BrowserRouter>
 	);
