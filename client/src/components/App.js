@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from './Header';
+import * as actions from '../actions';
 
 const Home = () => <h2>Hello from home</h2>;
 
-const App = () => {
+const App = props => {
+	useEffect(() => {
+		props.fetchUser();
+	}, []);
+
 	return (
 		<div className='container'>
 			<BrowserRouter>
@@ -18,4 +24,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default connect(null, actions)(App);
