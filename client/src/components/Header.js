@@ -31,7 +31,6 @@ const Header = props => {
 							props.auth ? '/surveys' :
 							'/'
 					}
-					clLinkssName='left brand-logo'
 				>
 					Emaily
 				</Link>
