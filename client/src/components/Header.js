@@ -16,10 +16,10 @@ const renderContent = props => {
 			);
 		default:
 			return [
-				<li>
+				<li key={1}>
 					<StripePayment />
 				</li>,
-				<li>
+				<li key={2}>
 					<a href='/api/logout'>Logout</a>
 				</li>
 			];
