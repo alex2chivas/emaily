@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import StripePayment from './StripePayment';
+
 const renderContent = props => {
 	switch (props.auth) {
 		case null:
@@ -13,11 +15,14 @@ const renderContent = props => {
 				</li>
 			);
 		default:
-			return (
+			return [
+				<li>
+					<StripePayment />
+				</li>,
 				<li>
 					<a href='/api/logout'>Logout</a>
 				</li>
-			);
+			];
 	}
 };
 
