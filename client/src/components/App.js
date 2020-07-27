@@ -6,6 +6,7 @@ import Header from './Header';
 import * as actions from '../actions';
 
 const Home = () => <h2>Hello from home</h2>;
+const Serveys = () => <h1>Dashboard</h1>;
 
 const App = props => {
 	useEffect(() => {
@@ -18,6 +19,7 @@ const App = props => {
 				<Header />
 				<Switch>
 					<Route path='/' exact component={Home} />
+					<Route path='/surveys' exact component={Serveys} />
 				</Switch>
 			</BrowserRouter>
 		</div>
