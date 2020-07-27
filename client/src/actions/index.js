@@ -1,4 +1,4 @@
 // User actions
-import { fetchUser } from './users';
+import { fetchUser, handleToken } from './users';
 
-export { fetchUser };
+export { fetchUser, handleToken };
