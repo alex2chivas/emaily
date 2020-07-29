@@ -10,13 +10,14 @@
 	"scripts": {
 		"start": "node index.js",
 		"server": "nodemon index.js",
+		"client": "npm run start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client \"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client ",
 		"default": "git add . && git commit -m 'pushed index, gitignore, readme and package files' && git push",
 		"services": "git add services && git commit -m 'finished pushing code from services folder' && git push",
 		"config": "git add config && git commit -m 'finished pushing code from config folder' && git push",
 		"models": "git add models && git commit -m 'finished pushing code from models folder' && git push",
-		"routes": "git add routes && git commit -m 'finished pushing code from routes folder' && git push",
-		"client": "npm run start --prefix client",
-		"dev": "concurrently \"npm run server\" \"npm run client \""
+		"routes": "git add routes && git commit -m 'finished pushing code from routes folder' && git push"
 	},
 	"repository": {
 		"type": "git",
