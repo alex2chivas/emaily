@@ -19,7 +19,8 @@ const renderContent = props => {
 				<li key={1}>
 					<StripePayment />
 				</li>,
-				<li key={2}>
+				<li key={2} style={{ margin: '0 15px' }}>{`credits: ${props.auth.credits}`}</li>,
+				<li key={3}>
 					<a href='/api/logout'>Logout</a>
 				</li>
 			];
