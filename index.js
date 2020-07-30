@@ -5,6 +5,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const { mongoURI, cookieKey } = require('./config/keys');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
