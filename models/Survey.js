@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const RecipientSchema = require('./Recipient');
 
-const serveySchema = new Schema({
+const surveySchema = new Schema({
 	title: String,
 	body: String,
 	subject: String,
@@ -25,4 +25,4 @@ const serveySchema = new Schema({
 	lastResponded: Date
 });
 
-mongoose.model('surveys', serveySchema);
+mongoose.model('surveys', surveySchema);

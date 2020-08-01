@@ -6,7 +6,7 @@ import Header from './Header';
 import Landing from './Landing';
 import * as actions from '../actions';
 
-const Serveys = () => <h1>Dashboard</h1>;
+const Surveys = () => <h1>Dashboard</h1>;
 
 const App = props => {
 	useEffect(() => {
@@ -19,7 +19,7 @@ const App = props => {
 				<Header />
 				<Switch>
 					<Route path='/' exact component={Landing} />
-					<Route path='/surveys' exact component={Serveys} />
+					<Route path='/surveys' exact component={Surveys} />
 				</Switch>
 			</BrowserRouter>
 		</div>
