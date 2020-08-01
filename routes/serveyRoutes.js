@@ -2,6 +2,8 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
+const Mailer = require('../services/Mailer');
+const surveytemplate = require('../services/emailTemplates/surveyTemplate');
 
 const Survey = mongoose.model('surveys');
 
@@ -17,5 +19,8 @@ module.exports = app => {
 			_user: req.user.id,
 			dateSent: moment().format('llll')
 		});
+
+		// Great place to end an email
+		const mailer = new Mailer(survey, surveytemplate(survey));
 	});
 };
