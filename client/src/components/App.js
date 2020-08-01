@@ -6,8 +6,7 @@ import Header from './Header';
 import Landing from './Landing';
 import * as actions from '../actions';
 import DashBoard from './Dashboard';
-
-const SurveyNew = () => <div>New Survey</div>;
+import SurveyNew from './surveys/SurveyNew';
 
 const App = props => {
 	useEffect(() => {
