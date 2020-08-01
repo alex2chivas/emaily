@@ -22,5 +22,6 @@ module.exports = app => {
 
 		// Great place to end an email
 		const mailer = new Mailer(survey, surveytemplate(survey));
+		mailer.send();
 	});
 };
