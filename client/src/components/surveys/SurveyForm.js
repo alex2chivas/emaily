@@ -5,16 +5,10 @@ import { Link } from 'react-router-dom';
 
 import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
-
-const FIELDS = [
-	{ label: 'Survey Title', name: 'title', noValuesError: 'You must provide a title' },
-	{ label: 'Subject Line', name: 'subject', noValuesError: 'You must provide a subject' },
-	{ label: 'Email Body', name: 'body', noValuesError: 'You must provide text for email body' },
-	{ label: 'Recipient List', name: 'emails', noValuesError: 'provide emails' }
-];
+import { FORM_FIELDS } from './formFields';
 
 const renderFields = props => {
-	return _.map(FIELDS, ({ name, label }, index) => {
+	return _.map(FORM_FIELDS, ({ name, label }, index) => {
 		return <Field key={`${name}: ${index}`} component={SurveyField} name={name} label={label} type='text' />;
 	});
 };
@@ -41,7 +35,7 @@ const validate = values => {
 
 	errors.emails = validateEmails(values.emails || '');
 
-	_.each(FIELDS, ({ name, noValuesError }) => {
+	_.each(FORM_FIELDS, ({ name, noValuesError }) => {
 		if (!values[name]) {
 			errors[name] = noValuesError;
 		}
