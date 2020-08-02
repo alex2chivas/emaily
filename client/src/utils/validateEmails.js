@@ -2,13 +2,15 @@ const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
 
 export default emails => {
 	const invalidEmails = emails.split(',').map(email => email.trim()).filter(email => !re.test(email));
-	const trailingCommaError = emails.split(',').map(email => email.trim()).join(',');
+	const trailingComma = emails.split(',').map(email => email.trim()).join(',');
 
-	if (trailingCommaError.length - 1 === trailingCommaError.lastIndexOf(',')) {
+	// To remove the last comma on the recipient emails if no email is proivded after the comm
+
+	if (trailingComma.length - 1 === trailingComma.lastIndexOf(',')) {
 		return 'remove comma at the end if no emails follow up';
 	}
 
-	if (invalidEmails) {
+	if (invalidEmails.length) {
 		return `These emails are invalid: ${invalidEmails}`;
 	}
 
