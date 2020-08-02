@@ -14,16 +14,16 @@ const App = props => {
 	}, []);
 
 	return (
-		<div className='container'>
-			<BrowserRouter>
+		<BrowserRouter>
+			<div className='container'>
 				<Header />
 				<Switch>
 					<Route path='/' exact component={Landing} />
 					<Route path='/surveys' exact component={DashBoard} />
 					<Route path='/surveys/new' exact component={SurveyNew} />
 				</Switch>
-			</BrowserRouter>
-		</div>
+			</div>
+		</BrowserRouter>
 	);
 };
 

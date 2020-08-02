@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import SurveyField from './SurveyField';
 
@@ -22,7 +23,13 @@ const SurveyForm = props => {
 		<div>
 			<form onSubmit={props.handleSubmit(values => console.log(values))}>
 				{renderFields()}
-				<button type='submit'>Submit</button>
+				<Link className='red btn-flat left white-text' to='/surveys'>
+					Cancel
+				</Link>
+				<button className='teal btn-flat right white-text' type='submit'>
+					Next
+					<i className='material-icons right'>done</i>
+				</button>
 			</form>
 		</div>
 	);
