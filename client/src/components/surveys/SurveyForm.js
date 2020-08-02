@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
 
 const FIELDS = [
-	{ label: 'Survey Title', name: 'title' },
-	{ label: 'Subject Line', name: 'subject' },
-	{ label: 'Body', name: 'body' },
-	{ label: 'Recipient List', name: 'emails' }
+	{ label: 'Survey Title', name: 'title', noValuesError: 'You must provide a title' },
+	{ label: 'Subject Line', name: 'subject', noValuesError: 'You must provide a subject' },
+	{ label: 'Email Body', name: 'body', noValuesError: 'You must provide text for email body' },
+	{ label: 'Recipient List', name: 'emails', noValuesError: 'You must provide emails' }
 ];
 
-const renderFields = () => {
+const renderFields = props => {
 	return _.map(FIELDS, ({ name, label }, index) => {
 		return <Field key={`${name}: ${index}`} component={SurveyField} name={name} label={label} type='text' />;
 	});
@@ -35,6 +35,20 @@ const SurveyForm = props => {
 	);
 };
 
+const validate = values => {
+	console.log(values);
+	const errors = {};
+
+	_.each(FIELDS, ({ name, noValuesError }) => {
+		if (!values[name]) {
+			errors[name] = noValuesError;
+		}
+	});
+	console.log(errors);
+	return errors;
+};
+
 export default reduxForm({
+	validate,
 	form: 'SurveyForm'
 })(SurveyForm);
