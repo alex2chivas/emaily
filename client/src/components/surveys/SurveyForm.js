@@ -33,7 +33,7 @@ const SurveyForm = props => {
 const validate = values => {
 	const errors = {};
 
-	errors.emails = validateEmails(values.emails || '');
+	errors.recipients = validateEmails(values.recipients || '');
 
 	_.each(FORM_FIELDS, ({ name, noValuesError }) => {
 		if (!values[name]) {
