@@ -7,7 +7,7 @@ import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
 import { FORM_FIELDS } from './formFields';
 
-const renderFields = props => {
+const renderFields = () => {
 	return _.map(FORM_FIELDS, ({ name, label }, index) => {
 		return <Field key={`${name}: ${index}`} component={SurveyField} name={name} label={label} type='text' />;
 	});
