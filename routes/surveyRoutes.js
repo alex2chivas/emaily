@@ -1,3 +1,6 @@
+const _ = require('lodash');
+const { Path } = require('path-parser');
+const { URL } = require('url');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
@@ -8,12 +11,46 @@ const surveytemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
-	app.get('/api/surveys/thanks', (req, res) => {
-		res.send('Thanks so much for filling out the survey');
+	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
+		res.send(
+			'Thanks so much for filling out the survey if you filled out the survey before your survey will not be doubled'
+		);
 	});
 
 	app.post('/api/surveys/webhooks', (req, res) => {
-		console.log(req.body);
+		const p = new Path('/api/surveys/:surveyId/:choice');
+
+		_.chain(req.body)
+			.map(({ email, url, event }) => {
+				const match = p.test(new URL(url).pathname);
+				if (match && event === 'click') {
+					const { surveyId, choice } = match;
+					return {
+						email,
+						surveyId,
+						choice
+					};
+				}
+			})
+			.compact()
+			.uniqBy('email', 'surveyId')
+			.each(({ surveyId, email, choice }) => {
+				Survey.updateOne(
+					{
+						_id: surveyId,
+						recipients: {
+							$elemMatch: { email, responded: false }
+						}
+					},
+					{
+						$inc: { [choice]: 1 },
+						$set: { 'recipients.$.responded': true },
+						lastResponded: new Date()
+					}
+				).exec();
+			})
+			.value();
+
 		res.send({});
 	});
 
