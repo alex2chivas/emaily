@@ -1,4 +1,4 @@
 // User actions
-import { fetchUser, handleToken, submitSurvey, fetchSurvey } from './users';
+import { fetchUser, handleToken, submitSurvey, fetchSurveys } from './users';
 
-export { fetchUser, handleToken, submitSurvey, fetchSurvey };
+export { fetchUser, handleToken, submitSurvey, fetchSurveys };
