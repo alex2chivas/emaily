@@ -11,6 +11,13 @@ const surveytemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
+	app.get('/api/surveys', requireLogin, async (req, res) => {
+		// select method queries MongoDB so it does not incluse recpients in the api call
+		const surveys = await Survey.find({ _user: req.user }).select({ recipients: false });
+
+		res.send(surveys);
+	});
+
 	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
 		res.send(
 			'Thanks so much for filling out the survey if you filled out the survey before your survey will not be doubled'
